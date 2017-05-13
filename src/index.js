@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
+import './css/footer.css'
 import PcIndex from './js/components/pc_index'
 import MobileIndex from './js/components/mobile_index'
 import MediaQuery from 'react-responsive';
