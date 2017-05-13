@@ -5,7 +5,11 @@
   "dependencies": {
     "antd": "^2.10.0",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-router": "^4.1.1",
+    "react-router-config": "^1.0.0-beta.3",
+    "react-router-dom": "^4.1.1",
+    "react-router-native": "^4.1.1"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"

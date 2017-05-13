@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import 'antd/dist/antd.css'
-import { DatePicker } from 'antd';
+import logo from '../image/logo.svg';
+import '../css/App.css';
+import PcIndex from './components/pc_index'
+import {Router, Route, hashHistory} from 'react-router';
 
 class App extends Component {
   render() {
@@ -15,7 +15,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-          <DatePicker />
+        <PcIndex/>
       </div>
     );
   }
