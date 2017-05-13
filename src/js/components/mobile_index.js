@@ -2,18 +2,18 @@
  * Created by Yooz on 2017/5/13.
  */
 import React, { Component } from 'react';
-import PcHeader from './pc_header'
-import './../../css/pc.css'
+import MoboleHeader from './mobile_header'
+import './../../css/mobile.css'
 
 
-class PcIndex extends Component {
+class MoboleIndex extends Component {
     render() {
         return (
             <div>
-                <PcHeader />
+                <MoboleHeader />
             </div>
         );
     }
 }
 
-export default PcIndex;
+export default MoboleIndex;

@@ -1,0 +1,9 @@
+#MobileHeader{
+    flex: 1;
+    background: #f6f6f6;
+}
+
+#MobileHeader header{
+    border-bottom: 1px solid #2db7f5;
+    padding-left: 10px;
+}
