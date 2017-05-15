@@ -6,4 +6,9 @@
 #MobileHeader header{
     border-bottom: 1px solid #2db7f5;
     padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }

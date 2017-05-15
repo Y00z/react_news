@@ -14,6 +14,7 @@ const TabPane = Tabs.TabPane
 const FormItem = Form.Item
 
 class PcHeader extends Component {
+
     constructor(props) {
         super(props)
         this.state = {
@@ -69,7 +70,7 @@ class PcHeader extends Component {
             </Menu.Item>
             :
             <Menu.Item key="register">
-                <Icon type="appstore"/>注册/登录
+                <Icon type="user"/>注册/登录
             </Menu.Item>
         return (
             <header>
@@ -121,7 +122,9 @@ class PcHeader extends Component {
                         </Menu>
                         <Modal title="Modal" visible={this.state.modalVisible}
                                onOk={() => this.setModalVisible(false)} onCancel={() => this.setModalVisible(false)}
-                               okText="OK" cancelText="Cancel">
+                               okText="OK" cancelText="Cancel"
+                               footer={null}>
+
                             <Tabs onChange={() => this.callback()} type="card">
                                 <TabPane tab="登录" key="1">
                                     <Form onSubmit={(e) => this.handleSubmit(e)} className="login-form">
@@ -151,8 +154,7 @@ class PcHeader extends Component {
                                 <TabPane tab="注册" key="2">
                                     <Form onSubmit={(e) => this.handleSubmit(e)} className="login-form">
                                         <FormItem
-                                            hasFeedback={true}
-                                        >
+                                            hasFeedback={true}>
                                             {getFieldDecorator('r_nickname', {
                                                 rules: [{
                                                     message: 'The input is not valid username!',
@@ -163,8 +165,7 @@ class PcHeader extends Component {
                                             )}
                                         </FormItem>
                                         <FormItem
-                                            hasFeedback={true}
-                                        >
+                                            hasFeedback={true}>
                                             {getFieldDecorator('r_password', {
                                                 rules: [{
                                                     message: 'Please input your password!',
@@ -177,8 +178,7 @@ class PcHeader extends Component {
                                             )}
                                         </FormItem>
                                         <FormItem
-                                            hasFeedback={true}
-                                        >
+                                            hasFeedback={true}>
                                             {getFieldDecorator('r_confirm', {
                                                 rules: [{
                                                     message: 'Please confirm your password!',
@@ -192,7 +192,7 @@ class PcHeader extends Component {
                                             )}
                                         </FormItem>
                                         <FormItem>
-                                            <Button type="primary" htmlType="submit" size="large">Register</Button>
+                                            <Button type="primary" htmlType="submit" size="large">注册</Button>
                                         </FormItem>
                                     </Form>
                                 </TabPane>
@@ -229,4 +229,3 @@ class PcHeader extends Component {
 }
 
 export default PcHeader = Form.create({})(PcHeader);
-;
