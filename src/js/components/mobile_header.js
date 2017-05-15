@@ -3,7 +3,9 @@
  */
 import React, {Component} from 'react';
 import 'antd/dist/antd.css'
-import logo from '../../image/logo.png';
+import logo from '../../image/logo.png'
+import request from './../common/request';
+import conf from './../common/conf';
 import {Menu, Icon, Modal, Button, Row, Col, Tabs, Form, Input, Checkbox} from 'antd';
 import {
     BrowserRouter as Router,
@@ -34,6 +36,23 @@ class MobileHeader extends Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
+                var data = {
+                    nickname: values.nickname,
+                    password: values.password
+                }
+                console.log(data)
+                request.post(conf.api.login, data)
+                    .then(response => {
+                        if (response && response.success) {
+                            var data = response.data;
+                            this.setState({
+                                username: data.nickname,
+                                accessToken: data.accessToken,
+                                logined: true,
+                                modalVisible: false
+                            })
+                        }
+                    })
             }
         });
     }
@@ -50,9 +69,7 @@ class MobileHeader extends Component {
         const {getFieldDecorator} = this.props.form;
         const logined = this.state.logined
             ?
-            <Link>
                 <Icon type="inbox"/>
-            </Link>
             :
             <Icon style={{fontSize: 25}} type="setting" onClick={() => this.login()}/>
 

@@ -4,7 +4,9 @@
 import React, {Component} from 'react';
 import 'antd/dist/antd.css'
 import logo from '../../image/logo.png';
-import {Menu, Icon, Modal, Button, Row, Col, Tabs, Form, Input, Checkbox} from 'antd';
+import request from './../common/request';
+import conf from './../common/conf';
+import {Menu, Icon, Modal, Button, Row, Col, Tabs, Form, Input} from 'antd';
 import {
     BrowserRouter as Router,
     Link
@@ -23,6 +25,7 @@ class PcHeader extends Component {
             username: null,
             modalVisible: false,       //登录框是否显示
             confirmDirty: false,        //注册密码确认
+            accessToken: null,
         }
     }
 
@@ -32,11 +35,17 @@ class PcHeader extends Component {
         })
     }
 
+    logout = () => {
+        this.setState({
+            logined: false
+        })
+    }
+
     handleClick = (e) => {
         console.log('click ', e);
         if (e.key === "register") {
             this.setModalVisible(true)
-        }else {
+        } else {
             this.setState({
                 current: e.key,
             });
@@ -52,9 +61,27 @@ class PcHeader extends Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
+                var data = {
+                    nickname: values.nickname,
+                    password: values.password
+                }
+                console.log(data)
+                request.post(conf.api.login, data)
+                    .then(response => {
+                        if (response && response.success) {
+                            var data = response.data;
+                            this.setState({
+                                username: data.nickname,
+                                accessToken: data.accessToken,
+                                logined: true,
+                                modalVisible: false
+                            })
+                        }
+                    })
             }
         });
     }
+
 
     render() {
         const {getFieldDecorator} = this.props.form;
@@ -63,10 +90,8 @@ class PcHeader extends Component {
             <Menu.Item key="logout">
                 <Button type="primary" htmlType="button">{this.state.username}</Button>
                 &nbsp;&nbsp;
-                <Link>
-                    <Button type="dashed" htmlType="button">个人中学</Button>
-                </Link>
-                <Button type="primary" htmlType="button">退出</Button>
+                <Button type="dashed" htmlType="button">个人中心</Button>
+                <Button type="ghost" htmlType="button" onClick={() => this.logout()}>退出</Button>
             </Menu.Item>
             :
             <Menu.Item key="register">
@@ -82,7 +107,7 @@ class PcHeader extends Component {
                             <span>ReactNews</span>
                         </a>
                     </Col>
-                    <Col span={16}>
+                    <Col span={18}>
                         <Menu
                             onClick={(e) => this.handleClick(e)}
                             selectedKeys={[this.state.current]}
@@ -199,7 +224,6 @@ class PcHeader extends Component {
                             </Tabs>
                         </Modal>
                     </Col>
-                    <Col span={2}></Col>
                 </Row>
             </header>
         );
