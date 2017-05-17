@@ -87,14 +87,14 @@ class PcHeader extends Component {
         const {getFieldDecorator} = this.props.form;
         const logined = this.state.logined
             ?
-            <Menu.Item key="logout">
+            <Menu.Item key="logout" className="register">
                 <Button type="primary" htmlType="button">{this.state.username}</Button>
                 &nbsp;&nbsp;
                 <Button type="dashed" htmlType="button">个人中心</Button>
                 <Button type="ghost" htmlType="button" onClick={() => this.logout()}>退出</Button>
             </Menu.Item>
             :
-            <Menu.Item key="register">
+            <Menu.Item key="register" className="register">
                 <Icon type="user"/>注册/登录
             </Menu.Item>
         return (
@@ -107,7 +107,7 @@ class PcHeader extends Component {
                             <span>ReactNews</span>
                         </a>
                     </Col>
-                    <Col span={18}>
+                    <Col span={16}>
                         <Menu
                             onClick={(e) => this.handleClick(e)}
                             selectedKeys={[this.state.current]}
@@ -138,10 +138,6 @@ class PcHeader extends Component {
 
                             <Menu.Item key="keji">
                                 <Icon type="appstore"/>科技
-                            </Menu.Item>
-
-                            <Menu.Item key="shishang">
-                                <Icon type="appstore"/>时尚
                             </Menu.Item>
                             {logined}
                         </Menu>
@@ -224,6 +220,7 @@ class PcHeader extends Component {
                             </Tabs>
                         </Modal>
                     </Col>
+                    <Col span={2}></Col>
                 </Row>
             </header>
         );

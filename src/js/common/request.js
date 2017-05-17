@@ -19,6 +19,17 @@ request.get = function(url,params) {
         .then((responseJson) => Mock.mock(responseJson))
 }
 
+request.getNews = function(url,params) {
+    var options = _.extend(conf.getHeader,{
+    });
+    if (params) {
+        url += '?' + queryString.stringify(params)
+    }
+    return fetch(url,options)
+        .then((response) => response.json())
+        .then((responseJson) => Mock.mock(responseJson))
+}
+
 request.post = function(url,body) {
     var options = _.extend(conf.header,{
         body : JSON.stringify(body)

@@ -4,6 +4,7 @@
 import React, {Component} from 'react';
 import PcHeader from './pc_header'
 import PcFooter from './pc_footer'
+import PcNewContainer from './pc_news_container'
 import './../../css/pc.css'
 
 
@@ -11,7 +12,8 @@ class PcIndex extends Component {
     render() {
         return (
             <div>
-                <PcHeader />
+                <PcHeader/>
+                <PcNewContainer/>
                 <PcFooter/>
             </div>
         );
