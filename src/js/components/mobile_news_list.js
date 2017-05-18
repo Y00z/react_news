@@ -1,16 +1,14 @@
 /**
- * Created by Yooz on 2017/5/16.
+ * Created by Yooz on 2017/5/17.
  */
+
 import React, {Component} from 'react';
-import {Card} from 'antd';
+import 'antd/dist/antd.css'
 import request from './../common/request';
 import conf from './../common/conf';
-import {
-    BrowserRouter as Router,
-    Link
-} from 'react-router-dom'
 
-class PcNewsImgBlock extends Component {
+class MobileNewsList extends Component {
+
     constructor(props) {
         super(props)
         this.state = {
@@ -35,34 +33,33 @@ class PcNewsImgBlock extends Component {
     }
 
     renderData = () => {
-        //组
-        var clos = this.props.clos;
-        var cellWidth = this.props.imageWidth;
-        var leftMargin = (this.props.width - cellWidth * clos) / (clos + 1);
         const imageStyle = {
-            width: cellWidth,
-            height: 90,
+            width: 90,
+            height: 80,
         }
-        const h3Style = {
-            width: cellWidth,
-            whiteSpace: "nowrap",   //只显示一行
-            overflow: 'hidden',         //清除浮动
-            textOverflow: 'ellipsis',  //多余省略号
+        const h4Style = {
+            width: 275
         }
+
         var itemArr = []
         var news = this.state.news
         if (news && news.length > 0) {
             news.map((data, index) => {
                 itemArr.push(
-                    <div key={index} style={{float: 'left', marginLeft: leftMargin, marginTop: 5}}>
+                    <div key={index} className="newslist-root">
                         <div>
                             <img src={data.thumbnail_pic_s}
                                  alt={data.thumbnail_pic_s}
                                  style={imageStyle}/>
                         </div>
-                        <div>
-                            <h4 style={h3Style}>{data.title}</h4>
-                            <p>{data.author_name}</p>
+                        <div className="news-content">
+                            <div className="news-h4" style={h4Style}>
+                                <h3 >{data.title}</h3>
+                            </div>
+                            <div className="news-data">
+                                <span className="realtype">{data.realtype}</span>
+                                <span>{data.date}</span>
+                            </div>
                         </div>
                     </div>
                 )
@@ -77,15 +74,11 @@ class PcNewsImgBlock extends Component {
 
     render() {
         return (
-            <div ref="card" style={{width: this.props.width, float: 'left'}}>
-                <Card
-                    title={this.props.title} bordered={true}
-                    bodyStyle={{margin: 0, padding: 0}}>
-                    {this.renderData()}
-                </Card>
+            <div>
+                {this.renderData()}
             </div>
         );
     }
 }
 
-export default PcNewsImgBlock;
+export default MobileNewsList;

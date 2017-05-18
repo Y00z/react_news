@@ -66,9 +66,9 @@ class PcNewContainer extends Component {
                             </TabPane>
                         </Tabs>
 
-                        <PcNewsImgBlock title="世界科技" type="keji" count={8} width="1130" imageWidth="112" clos={8}/>
+                        <PcNewsImgBlock title="世界科技" type="keji" count={8} width="1150" imageWidth="112" clos={8}/>
 
-                        <PcNewsImgBlock title="社会新闻" type="shehui" count={16} width="1130" imageWidth="112" clos={8}/>
+                        <PcNewsImgBlock title="社会新闻" type="shehui" count={16} width="1150" imageWidth="112" clos={8}/>
                     </Col>
                     <Col span={2}></Col>
                 </Row>
@@ -77,6 +77,5 @@ class PcNewContainer extends Component {
     }
 }
 
+
 export default PcNewContainer
-
-

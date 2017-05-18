@@ -12,3 +12,35 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.newslist-root {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid gray;
+    margin: 3px;
+}
+
+.news-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4px;
+}
+
+.news-data{
+    flex-direction: row;
+    margin-left: 5px;
+}
+
+
+.realtype{
+    display: inline-block;
+    width: 30px;
+    height: 19px;
+    background-color:pink;
+    border-radius: 10px;
+    color: red;
+    text-align: center;
+    margin-right: 5px;
+}
+
