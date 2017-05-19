@@ -6,7 +6,7 @@ import React, {Component} from 'react';
 import 'antd/dist/antd.css'
 import request from './../common/request';
 import conf from './../common/conf';
-
+import {Menu, Icon, Modal, Button, Row, Col, Tabs, Form, Input} from 'antd';
 class MobileNewsList extends Component {
 
     constructor(props) {
@@ -38,9 +38,8 @@ class MobileNewsList extends Component {
             height: 80,
         }
         const h4Style = {
-            width: 275
+            width: 100
         }
-
         var itemArr = []
         var news = this.state.news
         if (news && news.length > 0) {
@@ -53,7 +52,7 @@ class MobileNewsList extends Component {
                                  style={imageStyle}/>
                         </div>
                         <div className="news-content">
-                            <div className="news-h4" style={h4Style}>
+                            <div className="news-h4">
                                 <h3 >{data.title}</h3>
                             </div>
                             <div className="news-data">
@@ -75,7 +74,11 @@ class MobileNewsList extends Component {
     render() {
         return (
             <div>
-                {this.renderData()}
+                <Row>
+                    <Col span={24}>
+                        {this.renderData()}
+                    </Col>
+                </Row>
             </div>
         );
     }

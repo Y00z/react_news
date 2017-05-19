@@ -27,20 +27,27 @@
     padding: 4px;
 }
 
-.news-data{
+.news-data {
     flex-direction: row;
     margin-left: 5px;
 }
 
-
-.realtype{
+.realtype {
     display: inline-block;
     width: 30px;
     height: 19px;
-    background-color:pink;
+    background-color: pink;
     border-radius: 10px;
     color: red;
     text-align: center;
     margin-right: 5px;
 }
 
+.news-h4 {
+    width: 100%;
+}
+
+.carousel {
+    float: left;
+    width: 100%;
+}

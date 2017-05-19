@@ -5,10 +5,13 @@ import React, {Component} from 'react';
 import MobileHeader from './mobile_header'
 import MobileFooter from './mobile_footer'
 import MobileNewsList from './mobile_news_list'
-import {Tabs} from 'antd';
+import {Tabs, Carousel} from 'antd';
+import image1 from './../../image/carousel_1.jpg';
+import image2 from './../../image/carousel_2.jpg';
+import image3 from './../../image/carousel_3.jpg';
+import image4 from './../../image/carousel_4.jpg';
 const TabPane = Tabs.TabPane;
 import './../../css/mobile.css'
-
 
 class MoboleIndex extends Component {
     render() {
@@ -18,6 +21,14 @@ class MoboleIndex extends Component {
                 <Tabs
                     defaultActiveKey="1">
                     <TabPane tab="头条" key="1">
+                        <div className="carousel">
+                            <Carousel autoplay>
+                                <div><img src={image1} alt="image1"/></div>
+                                <div><img src={image2} alt="image2"/></div>
+                                <div><img src={image3} alt="image3"/></div>
+                                <div><img src={image4} alt="image4"/></div>
+                            </Carousel>
+                        </div>
                         <MobileNewsList type="top" count={8}/>
                     </TabPane>
                     <TabPane tab="社会" key="2">
