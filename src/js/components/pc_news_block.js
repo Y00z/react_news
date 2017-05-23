@@ -18,7 +18,7 @@ class PcNewsBlock extends Component {
     }
 
     componentWillMount() {
-        var params = {
+        const params = {
             type: this.props.type,
             action: 'getnews',
             count: this.props.count,
@@ -38,10 +38,14 @@ class PcNewsBlock extends Component {
         var news = this.state.news
         if (news && news.length > 1) {
             news.map((data, index) => {
-                console.log(data.title)
+                console.log(data.uniquekey)
                 itemArr.push(
                     <li key={index}>
-                        <Link to="/" style={{color: 'black'}}>{data.title}</Link>
+                        {/*<Link to={`details/${data.uniquekey}`} style={{color: 'black'}} target="_blank">{data.title}</Link>*/}
+                        <Link to={{
+                            pathname: '/details/' + data.uniquekey,
+                        }}
+                              style={{color: 'black'}} target="_blank">{data.title}</Link>
                     </li>
                 )
             })

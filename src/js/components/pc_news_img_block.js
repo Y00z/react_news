@@ -9,7 +9,6 @@ import {
     BrowserRouter as Router,
     Link
 } from 'react-router-dom'
-
 class PcNewsImgBlock extends Component {
     constructor(props) {
         super(props)
@@ -55,15 +54,17 @@ class PcNewsImgBlock extends Component {
             news.map((data, index) => {
                 itemArr.push(
                     <div key={index} style={{float: 'left', marginLeft: leftMargin, marginTop: 5}}>
-                        <div>
-                            <img src={data.thumbnail_pic_s}
-                                 alt={data.thumbnail_pic_s}
-                                 style={imageStyle}/>
-                        </div>
-                        <div>
-                            <h4 style={h3Style}>{data.title}</h4>
-                            <p>{data.author_name}</p>
-                        </div>
+                        <Link to={{pathname: "/details/" + data.uniquekey}} target="_blank">
+                            <div>
+                                <img src={data.thumbnail_pic_s}
+                                     alt={data.thumbnail_pic_s}
+                                     style={imageStyle}/>
+                            </div>
+                            <div>
+                                <h4 style={h3Style}>{data.title}</h4>
+                                <p>{data.author_name}</p>
+                            </div>
+                        </Link>
                     </div>
                 )
             })
