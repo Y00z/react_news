@@ -16,6 +16,7 @@ module.exports = {
     api: {
         login: 'http://rapapi.org/mockjs/19034/login',
         getNews: 'http://newsapi.gugujiankong.com/Handler.ashx',
-        newsDetail  : 'http://newsapi.gugujiankong.com/Handler.ashx'
+        newsDetail  : 'http://newsapi.gugujiankong.com/Handler.ashx',
+        comments : 'http://newsapi.gugujiankong.com/Handler.ashx',
     }
 }

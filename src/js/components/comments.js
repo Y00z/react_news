@@ -6,7 +6,7 @@ import 'antd/dist/antd.css'
 import logo from '../../image/logo.png'
 import request from './../common/request';
 import conf from './../common/conf';
-import {Menu, Icon, Modal, Button, Row, Col, Tabs, Form, Input, Checkbox} from 'antd';
+import {Menu, Icon, Modal, Button, Row, Col, Tabs, Form, Input, Checkbox, Card} from 'antd';
 import {
     BrowserRouter as Router,
     Link
@@ -18,7 +18,30 @@ class Comments extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            comments: null,
+            username: ''
+        }
+    }
+
+    componentWillMount() {
+        const params = {
+            action: 'getcomments',
+            uniquekey: this.props.uniquekey
+        }
+        request.get(conf.api.comments, params)
+            .then(response => {
+                console.log(response)
+                if (response && response.length > 0) {
+                    this.setState({
+                        comments: response
+                    })
+                }
+            })
+            .catch(err => {
+                console.log('获取新闻详情页评论出错')
+                console.log(JSON.stringify(err))
+            })
     }
 
 
@@ -31,6 +54,30 @@ class Comments extends Component {
         });
     }
 
+    renderData = () => {
+        var itemArr = []
+        var comments = this.state.comments
+        console.log(comments)
+        if (comments && comments.length > 0) {
+            comments.map((data, index) => {
+                itemArr.push(
+                    <Card key={index} title={data.UserName} extra={<a href="#">发布于:{data.datetime}</a>}>
+                        <p>{data.Comments}</p>
+                    </Card>
+                )
+            })
+            itemArr.reverse();
+            console.log(itemArr.slice(0,8))
+            return itemArr.slice(0,8);
+        }else {
+            itemArr.push(
+                <h2>暂无评论</h2>
+            )
+            return itemArr
+        }
+
+    }
+
     render() {
         const {getFieldDecorator} = this.props.form;
         return (
@@ -38,7 +85,7 @@ class Comments extends Component {
                 <Form onSubmit={(e) => this.handleSubmit(e)}>
                     <FormItem label="您的评论">
                         {getFieldDecorator('comments', {
-                            rules: [{required: true,message: 'Please input your comments!'}],
+                            rules: [{required: true, message: 'Please input your comments!'}],
                         })(
                             <Input type="textarea" rows={4} placeholder="随便写"/>
                         )}
@@ -49,6 +96,7 @@ class Comments extends Component {
                         </Button>
                     </FormItem>
                 </Form>
+                {this.renderData()}
             </div>
         );
     }

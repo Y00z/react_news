@@ -42,7 +42,6 @@ class PcDetails extends Component {
         }
         request.get(conf.api.newsDetail, params)
             .then(response => {
-                console.log(response)
                 if (response) {
                     this.setState({
                         news: response
@@ -61,7 +60,6 @@ class PcDetails extends Component {
             const data = (
                 <div className="detailContainer" dangerouslySetInnerHTML={{__html: this.state.news.pagecontent}}></div>
             )
-            console.log(data)
             return data
         }
         return <h1>没有数据，请重试</h1>
@@ -76,7 +74,7 @@ class PcDetails extends Component {
                     <Col span={14}>
                         {this.renderData()}
                         <hr />
-                        <Comment/>
+                        <Comment uniquekey={this.props.match.params.uniquekey}/>
                     </Col>
                     <Col span={6}>
                         <PcNewsImgBlock title="世界科技" type="keji" count={26} width="320" imageWidth="122" clos={2}/>
