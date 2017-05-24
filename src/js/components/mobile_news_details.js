@@ -4,7 +4,7 @@
 
 import React, {Component} from 'react'
 import 'antd/dist/antd.css'
-import {Row, Col} from 'antd'
+import {Row, Col, BackTop} from 'antd'
 import request from './../common/request'
 import conf from './../common/conf'
 import MobileHeader from './mobile_header'
@@ -62,6 +62,7 @@ class MobileNewsDetails extends Component {
                         </Col>
                     </Row>
                     <MobileFooter />
+                    <BackTop/>
                 </div>
             </div>
         );

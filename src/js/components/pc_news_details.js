@@ -9,7 +9,9 @@ import request from './../common/request'
 import conf from './../common/conf'
 import PcHeader from './pc_header'
 import PcFooter from './pc_footer'
-import {Menu, Icon, Modal, Button, Row, Col, Tabs, Form, Input, Checkbox} from 'antd'
+import PcNewsImgBlock from './pc_news_img_block'
+import Comment from './comments'
+import {Menu, Icon, Modal, Button, Row, Col, Tabs, Form, Input, BackTop} from 'antd'
 import {
     BrowserRouter as Router,
     Link
@@ -73,11 +75,16 @@ class PcDetails extends Component {
                     <Col span={2}></Col>
                     <Col span={14}>
                         {this.renderData()}
+                        <hr />
+                        <Comment/>
                     </Col>
-                    <Col span={6}></Col>
+                    <Col span={6}>
+                        <PcNewsImgBlock title="世界科技" type="keji" count={26} width="320" imageWidth="122" clos={2}/>
+                    </Col>
                     <Col span={2}></Col>
                 </Row>
                 <PcFooter/>
+                <BackTop/>
             </div>
         )
     }
