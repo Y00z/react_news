@@ -6,7 +6,7 @@ import 'antd/dist/antd.css'
 import logo from '../../image/logo.png';
 import request from './../common/request';
 import conf from './../common/conf';
-import {Menu, Icon, Modal, Button, Row, Col, Tabs, Form, Input} from 'antd';
+import {Menu, Icon, Modal, Button, Row, Col, Tabs, Form, Input, message} from 'antd';
 import {
     BrowserRouter as Router,
     Link
@@ -26,8 +26,10 @@ class PcHeader extends Component {
             modalVisible: false,       //登录框是否显示
             confirmDirty: false,        //注册密码确认
             accessToken: null,
+            login: 'login',        //选择的登录还是注册
         }
     }
+
 
     setModalVisible = (value) => {
         this.setState({
@@ -53,33 +55,75 @@ class PcHeader extends Component {
     }
 
     callback = (key) => {
+
+        if (key === 1) {
+            this.setState({
+                login: 'login'
+            })
+        } else if (key === 2) {
+            this.setState({
+                login: 'register'
+            })
+        }
         console.log(key)
     }
+
 
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
-                var data = {
-                    nickname: values.nickname,
-                    password: values.password
+                var login = this.state.login
+                if (login === 'login') {
+                    var data = {
+                        action: this.state.login,
+                        username: values.nickname,
+                        password: values.password
+                    }
+                    request.get(conf.api.login, data)
+                        .then(response => {
+                            if (response && response._id) {
+                                this.setState({
+                                    username: response.NickUserName,
+                                    accessToken: response.UserId,
+                                    logined: true,
+                                    modalVisible: false
+                                })
+                            } else {
+                                message.error('SORRY,用户名或密码错误。');
+                            }
+                        })
+                        .catch(err => {
+                            message.error('SORRY,网络错误,请重试。');
+                            console.log('登录失败')
+                            console.log(JSON.stringify(err))
+                        })
+                } else if (login === 'register') {
+                    var data = {
+                        action: this.state.login,
+                        r_userName: values.r_nickname,
+                        r_password: values.r_password,
+                        r_confirmPassword: values.r_confirm
+                    }
+                    request.get(conf.api.login, data)
+                        .then(response => {
+                            if (response) {
+                                message.error('注册成功。');
+                            } else {
+                                message.error('SORRY,注册失败');
+                            }
+                        })
+                        .catch(err => {
+                            message.error('SORRY,网络错误,请重试。');
+                            console.log('注册失败')
+                            console.log(JSON.stringify(err))
+                        })
                 }
-                console.log(data)
-                request.post(conf.api.login, data)
-                    .then(response => {
-                        if (response && response.success) {
-                            var data = response.data;
-                            this.setState({
-                                username: data.nickname,
-                                accessToken: data.accessToken,
-                                logined: true,
-                                modalVisible: false
-                            })
-                        }
-                    })
+
             }
         });
+
     }
 
 
@@ -146,7 +190,7 @@ class PcHeader extends Component {
                                okText="OK" cancelText="Cancel"
                                footer={null}>
 
-                            <Tabs onChange={() => this.callback()} type="card">
+                            <Tabs onChange={(key) => this.callback(key)} type="card">
                                 <TabPane tab="登录" key="1">
                                     <Form onSubmit={(e) => this.handleSubmit(e)} className="login-form">
                                         <FormItem>

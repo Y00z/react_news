@@ -73,7 +73,6 @@ class PcDetails extends Component {
                     <Col span={2}></Col>
                     <Col span={14}>
                         {this.renderData()}
-                        <hr />
                         <Comment uniquekey={this.props.match.params.uniquekey}/>
                     </Col>
                     <Col span={6}>
