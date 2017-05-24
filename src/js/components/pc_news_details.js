@@ -14,8 +14,7 @@ import {
     BrowserRouter as Router,
     Link
 } from 'react-router-dom'
-const TabPane = Tabs.TabPane
-const FormItem = Form.Item
+
 class PcDetails extends Component {
 
     constructor(props) {
@@ -46,6 +45,7 @@ class PcDetails extends Component {
                     this.setState({
                         news: response
                     })
+                    document.title = this.state.news.title + " - React News | React 驱动的新闻平台"
                 }
             })
             .catch(err => {

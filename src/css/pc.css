@@ -46,6 +46,9 @@
 
 /*image block******END*****/
 
+/*image block******START*****/
+/*image block******END*****/
+
 iframe {
     position: relative !important;
     overflow-y: hidden !important;
@@ -56,9 +59,11 @@ iframe {
     font-size: 12px !important;
 }
 
-.ant-menu-horizontal > .ant-menu-item > a, .ant-menu-horizontal > .ant-menu-submenu > a {
+.ant-menu-horizontal > .ant-menu-item > a, .ant-menu-horizontal > .ant-menu-submenu > a
+{
     display: inline-block !important;
 }
+
 
 /*Footer******Start*****/
 
@@ -67,18 +72,19 @@ iframe {
     padding-top: 20px;
 }
 
+
 /*Footer******End*****/
-.title, .article-title .title {
-    font-size: 0.44rem !important;
+.title,.article-title .title {
+    font-size: 18px;
     line-height: 1.4em
 }
 
 .article-src-time {
-    font-size: 0.3rem !important;
+    font-size: 11px;
 }
 
 .article-content .txt {
-    font-size: 0.36rem !important;
+    font-size: 13px;
 }
 
 /**网易代码引入演示**/
@@ -209,11 +215,15 @@ iframe {
     margin-top: 1px;
 }
 
+
 /*productlist-item */
+
+
+
 
 /**Article Content**/
 
-.container {
+.container{
     text-align: center;
 }
 
@@ -221,18 +231,18 @@ iframe {
     text-align: justify
 }
 
-.article-content .img .img-wrap, .hot-news img {
+.article-content .img .img-wrap,.hot-news img {
     background-repeat: no-repeat;
     background-position: center
 }
 
-.hn-title h2, .in-title h2 {
+.hn-title h2,.in-title h2 {
     z-index: 1;
     font-weight: 600
 }
 
 #title {
-    margin: 16px 16px 0 !important;
+    margin: 16px 16px 0!important;
     border-bottom: 1px solid #e5e5e5
 }
 
@@ -240,7 +250,7 @@ iframe {
     margin-bottom: .2rem
 }
 
-#title .title, .article-title .title {
+#title .title,.article-title .title {
     font-size: 1.44rem;
     line-height: 1.4em
 }
@@ -250,7 +260,7 @@ iframe {
 }
 
 .article-src-time {
-    font-size: 1rem;
+    font-size: 11px;
     color: #999;
     padding-bottom: .2rem
 }
@@ -261,9 +271,6 @@ iframe {
     margin-top: 0
 }
 
-.article-content .txt {
-    font-size: 1.36rem
-}
 
 .article-content .img {
     margin-bottom: .3rem
@@ -317,4 +324,3 @@ iframe {
     margin-top: -.21rem;
     left: .66rem
 }
-

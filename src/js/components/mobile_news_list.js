@@ -7,6 +7,12 @@ import 'antd/dist/antd.css'
 import request from './../common/request';
 import conf from './../common/conf';
 import {Menu, Icon, Modal, Button, Row, Col, Tabs, Form, Input} from 'antd';
+import {
+    BrowserRouter as Router,
+    Route,
+    Link
+} from 'react-router-dom'
+
 class MobileNewsList extends Component {
 
     constructor(props) {
@@ -45,21 +51,25 @@ class MobileNewsList extends Component {
         if (news && news.length > 0) {
             news.map((data, index) => {
                 itemArr.push(
-                    <div key={index} className="newslist-root">
-                        <div>
-                            <img src={data.thumbnail_pic_s}
-                                 alt={data.thumbnail_pic_s}
-                                 style={imageStyle}/>
-                        </div>
-                        <div className="news-content">
-                            <div className="news-h4">
-                                <h3 >{data.title}</h3>
+                    <div key={index}>
+                        <Link className="newslist-root" to={{
+                            pathname: '/details/' + data.uniquekey,
+                        }}>
+                            <div>
+                                <img src={data.thumbnail_pic_s}
+                                     alt={data.thumbnail_pic_s}
+                                     style={imageStyle}/>
                             </div>
-                            <div className="news-data">
-                                <span className="realtype">{data.realtype}</span>
-                                <span>{data.date}</span>
+                            <div className="news-content">
+                                <div className="news-h4">
+                                    <h3 >{data.title}</h3>
+                                </div>
+                                <div className="news-data">
+                                    <span className="realtype">{data.realtype}</span>
+                                    <span>{data.date}</span>
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     </div>
                 )
             })
