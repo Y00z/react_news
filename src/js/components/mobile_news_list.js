@@ -66,7 +66,7 @@ class MobileNewsList extends Component {
                                 </div>
                                 <div className="news-data">
                                     <span className="realtype">{data.realtype}</span>
-                                    <span>{data.date}</span>
+                                    <span style={{color: 'gray'}}>{data.date}</span>
                                 </div>
                             </div>
                         </Link>

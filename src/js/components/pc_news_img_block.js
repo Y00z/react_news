@@ -43,6 +43,7 @@ class PcNewsImgBlock extends Component {
             height: 90,
         }
         const h3Style = {
+            color:'black',
             width: cellWidth,
             whiteSpace: "nowrap",   //只显示一行
             overflow: 'hidden',         //清除浮动
@@ -60,7 +61,7 @@ class PcNewsImgBlock extends Component {
                                      alt={data.thumbnail_pic_s}
                                      style={imageStyle}/>
                             </div>
-                            <div>
+                            <div className="pc-image-news-title">
                                 <h4 style={h3Style}>{data.title}</h4>
                                 <p>{data.author_name}</p>
                             </div>
