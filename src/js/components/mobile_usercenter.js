@@ -8,17 +8,17 @@ import {
     BrowserRouter as Router,
     Link
 } from 'react-router-dom'
-import {Icon, Button, Row, Col, Tabs, Upload, Modal, message, Card} from 'antd'
+import {Row, Col, Tabs, message, Card} from 'antd'
 import MobileHeader from './mobile_header'
 import MobileFooter from './mobile_footer'
 import UploadImage from './upload_image'
 const TabPane = Tabs.TabPane
 class MobileUserCenter extends Component {
-
     constructor(props) {
         super(props)
         this.state = {
-            comments: null
+            comments: null,
+            collection:null
         }
     }
 
@@ -27,28 +27,77 @@ class MobileUserCenter extends Component {
             action: 'getuc',
             userid: localStorage.userId
         }
-        request.get(conf.api.myComment, params)
+        request.get(conf.api.myCollection, params)
             .then(response => {
                 if (response && response.length > 0) {
+                    response.reverse()
                     this.setState({
-                        comments: response
+                        collection: response.slice(0, 8)
                     })
                 } else {
-                    message.error('SORRY,用户名或密码错误。');
+                    message.error('SORRY,获取收藏失败。');
                 }
             })
             .catch(err => {
-                message.error('SORRY,网络错误,请重试。');
-                console.log('登录失败')
+                message.error('SORRY,网络错误,获取收藏失败,请重试。');
+                console.log('获取收藏失败')
+                console.log(JSON.stringify(err))
+            })
+
+        this._getComments()
+    }
+
+    _getComments = ()=>{
+        const params = {
+            action: 'getusercomments',
+            userid: localStorage.userId
+        }
+        request.get(conf.api.myComments, params)
+            .then(response => {
+                console.log(response)
+                if (response && response.length > 0) {
+                    response.reverse()
+                    this.setState({
+                        comments: response.slice(0, 8)
+                    })
+                } else {
+                    message.error('SORRY,获取评论失败。');
+                }
+            })
+            .catch(err => {
+                message.error('SORRY,网络错误,获取评论失败,请重试。');
+                console.log('获取评论失败')
                 console.log(JSON.stringify(err))
             })
     }
 
-    renderData = () => {
+    _renderComments = ()=>{
         var itemArr = []
+        console.log(this.state.comments)
         var comments = this.state.comments
         if (comments && comments.length > 1) {
             comments.map((data, index) => {
+                console.log(data.title)
+                itemArr.push(
+                    <Card key={index} title={`于 ${data.datetime} 评论了文章 ${data.uniquekey}`}
+                          extra={<a target="_blank" href={`/details/${data.uniquekey}`}>查看</a>}>
+                        <p>{data.Comments}</p>
+                    </Card>
+                )
+            })
+        } else {
+            itemArr.push(
+                <h1>暂无评论列表。</h1>
+            )
+        }
+        return itemArr
+    }
+
+    renderData = () => {
+        var itemArr = []
+        var collection = this.state.collection
+        if (collection && collection.length > 1) {
+            collection.map((data, index) => {
                 console.log(data.title)
                 itemArr.push(
                     <Card key={index} title={data.uniquekey}
@@ -75,7 +124,9 @@ class MobileUserCenter extends Component {
                             <TabPane tab="我的收藏列表" key="1">
                                 {this.renderData()}
                             </TabPane>
-                            <TabPane tab="我的评论列表" key="2"></TabPane>
+                            <TabPane tab="我的评论列表" key="2">
+                                {this._renderComments()}
+                            </TabPane>
                             <TabPane tab="我的头像设置" key="3">
                                 <UploadImage />
                             </TabPane>

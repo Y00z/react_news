@@ -21,6 +21,7 @@ module.exports = {
         commentsList : 'http://newsapi.gugujiankong.com/Handler.ashx',
         comment : 'http://newsapi.gugujiankong.com/Handler.ashx',
         collection : 'http://newsapi.gugujiankong.com/Handler.ashx',
-        myComment : 'http://newsapi.gugujiankong.com/Handler.ashx'
+        myCollection : 'http://newsapi.gugujiankong.com/Handler.ashx',
+        myComments : 'http://newsapi.gugujiankong.com/Handler.ashx'
     }
 }

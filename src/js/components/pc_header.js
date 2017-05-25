@@ -162,7 +162,7 @@ class PcHeader extends Component {
                     <Col span={4}>
                         <a href="/" className="logo">
                             <img src={logo} alt="logo"/>
-                            <span>ReactNews</span>
+                            <span>ReactNewss</span>
                         </a>
                     </Col>
                     <Col span={16}>
