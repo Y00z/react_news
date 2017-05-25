@@ -110,17 +110,37 @@ class Comments extends Component {
                         <Button type="primary" htmlType="submit">
                             发表评论
                         </Button>
+                        <Button style={{marginLeft: 20}} type="primary" htmlType="button"
+                                onClick={() => this.addCollection()}>
+                            收藏
+                        </Button>
                     </FormItem>
                 </Form>
                 {this.renderData()}
             </div>
-        );
+        )
     }
 
-    handleConfirmBlur = (e) => {
-        const value = e.target.value;
-        this.setState({confirmDirty: this.state.confirmDirty || !!value});
+
+    addCollection = () => {
+        const params = {
+            action: 'uc',
+            userid: localStorage.userId,
+            uniquekey: this.props.uniquekey
+        }
+        request.get(conf.api.collection, params)
+            .then(response => {
+                if (response)
+                    message.success('收藏成功。')
+                else
+                    message.success('收藏失败。');
+            })
+            .catch(err => {
+                message.error('SORRY,网络错误,请重试。')
+                console.log('收藏失败')
+                console.log(JSON.stringify(err))
+            })
     }
 }
 
-export default Comments = Form.create({})(Comments);
+export default Comments = Form.create({})(Comments)
