@@ -57,6 +57,125 @@
     color: #666;
 }
 
+/*wangyi*/
+.first a {
+    padding: 0;
+    font-size: 14px;
+    margin-left: 6px;
+    color: black;
+}
+
+
+.first h3 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.rootdiv ul li {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    line-height: 25px;
+}
+
+.first h3 {
+    border-left: 2px #f33 solid;
+    height: 14px;
+    line-height: 14px;
+}
+
+.first h3 a {
+    padding: 0;
+    font-size: 14px;
+}
+
+.rootdiv ul li a {
+    color: gray;
+    margin-left: 15px;
+}
+
+/*.mod_all_product .pop_all_product a {*/
+/*margin: 0 4px 0 0;*/
+/*color: #888;*/
+/*}*/
+
+/*.mod_all_product .pop_all_product a {*/
+/*margin: 0 4px 0 0;*/
+/*color: #888;*/
+/*}*/
+
+/*.mod_all_product a {*/
+/*white-space: nowrap;*/
+/*}*/
+
+/*a {*/
+/*color: #404040;*/
+/*}*/
+
+/*a {*/
+/*text-decoration: none;*/
+/*}*/
+
+/*a:-webkit-any-link {*/
+/*color: -webkit-link;*/
+/*cursor: auto;*/
+/*text-decoration: underline;*/
+/*}*/
+
+/*.index2017_960_wrap .mod_all_product .pop_all_product li {*/
+/*line-height: 28px;*/
+/*}*/
+
+/*.mod_all_product .pop_all_product .first {*/
+/*border-top: 0;*/
+/*font-size: 14px;*/
+/*}*/
+
+/*.ua-win .pop_all_product .first, .ua-win .pop_all_product h3 {*/
+/*font-family: "Microsoft YaHei", "\5fae\8f6f\96c5\9ed1";*/
+/*}*/
+
+/*.mod_all_product .pop_all_product li {*/
+/*padding: 15px 0 10px 0;*/
+/*border-top: 1px #eee solid;*/
+/*line-height: 24px;*/
+/*}*/
+
+/*li {*/
+/*display: list-item;*/
+/*text-align: -webkit-match-parent;*/
+/*}*/
+
+/*ol, ul {*/
+/*list-style: none;*/
+/*}*/
+
+/*ul, menu, dir {*/
+/*display: block;*/
+/*list-style-type: disc;*/
+/*-webkit-margin-before: 1em;*/
+/*-webkit-margin-after: 1em;*/
+/*-webkit-margin-start: 0px;*/
+/*-webkit-margin-end: 0px;*/
+/*-webkit-padding-start: 40px;*/
+/*}*/
+
+/*.ua-win .pop_all_product {*/
+/*font-family: "\5b8b\4f53", "Arial";*/
+/*}*/
+
+/*.mod_all_product {*/
+/*height: 471px;*/
+/*font-size: 12px;*/
+/*overflow: visible;*/
+/*}*/
+
+/*.ne_area {*/
+/*width: 1200px;*/
+/*margin: 0 auto;*/
+/*background: #fff;*/
+/*font-family: "Microsoft YaHei", "\5fae\8f6f\96c5\9ed1";*/
+/*}*/
+
 /*.imageblock {*/
 /*!*margin: 6px;*!*/
 /*margin-left: 12px;*/

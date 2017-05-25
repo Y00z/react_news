@@ -8,6 +8,7 @@ import {
     BrowserRouter as Router,
     Link
 } from 'react-router-dom'
+import {Card} from 'antd';
 class PcNewsBlock extends Component {
 
     constructor(props) {
@@ -33,6 +34,7 @@ class PcNewsBlock extends Component {
             })
     }
 
+
     renderData = () => {
         var itemArr = [];
         var news = this.state.news
@@ -40,13 +42,18 @@ class PcNewsBlock extends Component {
             news.map((data, index) => {
                 console.log(data.uniquekey)
                 itemArr.push(
-                    <li key={index}>
-                        {/*<Link to={`details/${data.uniquekey}`} style={{color: 'black'}} target="_blank">{data.title}</Link>*/}
-                        <Link to={{
-                            pathname: '/details/' + data.uniquekey,
-                        }}
-                              style={{color: 'black'}} target="_blank">{data.title}</Link>
-                    </li>
+                    <Link to={{pathname: '/details/' + data.uniquekey,}} target="_blank">
+                        <li key={index}>
+                            {/*<Link to={`details/${data.uniquekey}`} style={{color: 'black'}} target="_blank">{data.title}</Link>*/}
+                            <h3 style={{
+                                width: 395,
+                                color: 'black',
+                                whiteSpace: "nowrap",   //只显示一行
+                                overflow: 'hidden',         //清除浮动
+                                textOverflow: 'ellipsis',  //多余省略号
+                            }}>{data.title}</h3>
+                        </li>
+                    </Link>
                 )
             })
         } else {
@@ -61,9 +68,11 @@ class PcNewsBlock extends Component {
         return (
             <div className="topNewsList">
                 <Router>
-                    <ul>
-                        {this.renderData()}
-                    </ul>
+                    <Card bodyStyle={{padding: 0}}>
+                        <ul>
+                            {this.renderData()}
+                        </ul>
+                    </Card>
                 </Router>
             </div>
         );
