@@ -51,7 +51,7 @@ class PcUserCenter extends Component {
             comments.map((data, index) => {
                 console.log(data.title)
                 itemArr.push(
-                    <Card title={data.uniquekey} extra={<a target="_blank" href={`/details/${data.uniquekey}`}>查看</a>}
+                    <Card key={index} title={data.uniquekey} extra={<a target="_blank" href={`/details/${data.uniquekey}`}>查看</a>}
                           style={{width: 500}}>
                         <p>{data.Title}</p>
                     </Card>
