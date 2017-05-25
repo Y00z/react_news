@@ -6,7 +6,7 @@ import 'antd/dist/antd.css'
 import logo from '../../image/logo.png'
 import request from './../common/request';
 import conf from './../common/conf';
-import {Menu, Icon, Modal, Button, Row, Col, Tabs, Form, Input, Checkbox, Card} from 'antd';
+import {Menu, Icon, Modal, Button, Row, Col, Tabs, Form, Input, message, Card} from 'antd';
 import {
     BrowserRouter as Router,
     Link
@@ -20,7 +20,7 @@ class Comments extends Component {
         super(props)
         this.state = {
             comments: null,
-            username: ''
+            username: '',
         }
     }
 
@@ -29,9 +29,8 @@ class Comments extends Component {
             action: 'getcomments',
             uniquekey: this.props.uniquekey
         }
-        request.get(conf.api.comments, params)
+        request.get(conf.api.commentsList, params)
             .then(response => {
-                console.log(response)
                 if (response && response.length > 0) {
                     this.setState({
                         comments: response
@@ -50,6 +49,25 @@ class Comments extends Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
+                console.log(localStorage.userId);
+                var data = {
+                    action: 'comment',
+                    userid: localStorage.userId,
+                    uniquekey: this.props.uniquekey,
+                    commnet: values.comments
+                }
+                request.get(conf.api.comment, data)
+                    .then(response => {
+                        if (response) {
+                            message.success('评论成功。');
+                        }
+                        this.componentWillMount();
+                    })
+                    .catch(err => {
+                        message.error('SORRY,网络错误,请重试。');
+                        console.log('评论失败')
+                        console.log(JSON.stringify(err))
+                    })
             }
         });
     }
@@ -57,7 +75,6 @@ class Comments extends Component {
     renderData = () => {
         var itemArr = []
         var comments = this.state.comments
-        console.log(comments)
         if (comments && comments.length > 0) {
             comments.map((data, index) => {
                 itemArr.push(
@@ -67,9 +84,8 @@ class Comments extends Component {
                 )
             })
             itemArr.reverse();
-            console.log(itemArr.slice(0,8))
-            return itemArr.slice(0,8);
-        }else {
+            return itemArr.slice(0, 8);
+        } else {
             itemArr.push(
                 <h2>暂无评论</h2>
             )
@@ -85,7 +101,7 @@ class Comments extends Component {
                 <Form onSubmit={(e) => this.handleSubmit(e)}>
                     <FormItem label="您的评论">
                         {getFieldDecorator('comments', {
-                            rules: [{required: true, message: 'Please input your comments!'}],
+                            rules: [{message: 'Please input your comments!'}],
                         })(
                             <Input type="textarea" rows={4} placeholder="随便写"/>
                         )}

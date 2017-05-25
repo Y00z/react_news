@@ -10,8 +10,8 @@ import conf from './../common/conf'
 import MobileHeader from './mobile_header'
 import MobileFooter from './mobile_footer'
 import './../../css/mobile.css'
+import Comment from './comments'
 class MobileNewsDetails extends Component {
-
     constructor(props) {
         super(props)
         this.state = {
@@ -59,6 +59,7 @@ class MobileNewsDetails extends Component {
                     <Row>
                         <Col span={24} className="container">
                             {this.renderData()}
+                            <Comment uniquekey={this.props.match.params.uniquekey}/>
                         </Col>
                     </Row>
                     <MobileFooter />
@@ -68,5 +69,4 @@ class MobileNewsDetails extends Component {
         );
     }
 }
-
 export default MobileNewsDetails;

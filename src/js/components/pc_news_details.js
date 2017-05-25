@@ -76,7 +76,9 @@ class PcDetails extends Component {
                         <Comment uniquekey={this.props.match.params.uniquekey}/>
                     </Col>
                     <Col span={6}>
-                        <PcNewsImgBlock title="世界科技" type="keji" count={26} width="320" imageWidth="122" clos={2}/>
+                        <PcNewsImgBlock title="世界科技" type="keji" count={20} width="320" imageWidth="122" clos={2}/>
+                        <PcNewsImgBlock title="社会新闻" type="shehui" count={20} width="320" imageWidth="122" clos={2}/>
+                        <PcNewsImgBlock title="国际新闻" type="guoji" count={20} width="320" imageWidth="122" clos={2}/>
                     </Col>
                     <Col span={2}></Col>
                 </Row>

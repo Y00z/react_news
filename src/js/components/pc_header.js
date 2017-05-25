@@ -11,7 +11,6 @@ import {
     BrowserRouter as Router,
     Link
 } from 'react-router-dom'
-
 const TabPane = Tabs.TabPane
 const FormItem = Form.Item
 
@@ -27,9 +26,9 @@ class PcHeader extends Component {
             confirmDirty: false,        //注册密码确认
             accessToken: null,
             login: 'login',        //选择的登录还是注册
+            userId: '',
         }
     }
-
 
     setModalVisible = (value) => {
         this.setState({
@@ -41,6 +40,8 @@ class PcHeader extends Component {
         this.setState({
             logined: false
         })
+        localStorage.userId = null
+        localStorage.userNickName = null
     }
 
     handleClick = (e) => {
@@ -68,7 +69,6 @@ class PcHeader extends Component {
         console.log(key)
     }
 
-
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.form.validateFields((err, values) => {
@@ -88,8 +88,10 @@ class PcHeader extends Component {
                                     username: response.NickUserName,
                                     accessToken: response.UserId,
                                     logined: true,
-                                    modalVisible: false
+                                    modalVisible: false,
                                 })
+                                localStorage.userId = response.UserId
+                                localStorage.userNickName = response.NickUserName;
                             } else {
                                 message.error('SORRY,用户名或密码错误。');
                             }
@@ -123,16 +125,27 @@ class PcHeader extends Component {
 
             }
         });
-
     }
 
+    componentDidMount() {
+        if (localStorage.userNickName !== 'null') {
+            this.setState({
+                logined: true
+            })
+        } else {
+            this.setState({
+                logined: false
+            })
+        }
+    }
 
     render() {
         const {getFieldDecorator} = this.props.form;
-        const logined = this.state.logined
+        var logined = this.state.logined
             ?
             <Menu.Item key="logout" className="register">
-                <Button type="primary" htmlType="button">{this.state.username}</Button>
+                <Button type="primary"
+                        htmlType="button">{localStorage.userNickName === 'null' ? this.state.username : localStorage.userNickName }</Button>
                 &nbsp;&nbsp;
                 <Button type="dashed" htmlType="button">个人中心</Button>
                 <Button type="ghost" htmlType="button" onClick={() => this.logout()}>退出</Button>

@@ -18,6 +18,7 @@ module.exports = {
         login :'http://newsapi.gugujiankong.com/Handler.ashx',
         getNews: 'http://newsapi.gugujiankong.com/Handler.ashx',
         newsDetail  : 'http://newsapi.gugujiankong.com/Handler.ashx',
-        comments : 'http://newsapi.gugujiankong.com/Handler.ashx',
+        commentsList : 'http://newsapi.gugujiankong.com/Handler.ashx',
+        comment : 'http://newsapi.gugujiankong.com/Handler.ashx',
     }
 }
