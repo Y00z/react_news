@@ -20,6 +20,7 @@ module.exports = {
         newsDetail  : 'http://newsapi.gugujiankong.com/Handler.ashx',
         commentsList : 'http://newsapi.gugujiankong.com/Handler.ashx',
         comment : 'http://newsapi.gugujiankong.com/Handler.ashx',
-        collection : 'http://newsapi.gugujiankong.com/Handler.ashx'
+        collection : 'http://newsapi.gugujiankong.com/Handler.ashx',
+        myComment : 'http://newsapi.gugujiankong.com/Handler.ashx'
     }
 }
