@@ -8,12 +8,12 @@ import {
     BrowserRouter as Router,
     Link
 } from 'react-router-dom'
-import {Menu, Icon, Modal, Button, Row, Col, Tabs, Form, Input, BackTop, Upload} from 'antd'
-import PcHeader from './pc_header'
-import PcFooter from './pc_footer'
+import {Icon, Button, Row, Col, Tabs, Upload, Modal} from 'antd'
+import MobileHeader from './mobile_header'
+import MobileFooter from './mobile_footer'
 const TabPane = Tabs.TabPane
+class MobileUserCenter extends Component {
 
-class PcUserCenter extends Component {
     state = {
         previewVisible: false,
         previewImage: '',
@@ -24,6 +24,7 @@ class PcUserCenter extends Component {
             url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
         }],
     };
+
 
     handleCancel = () => this.setState({previewVisible: false})
 
@@ -46,13 +47,11 @@ class PcUserCenter extends Component {
                 <div className="ant-upload-text">Upload</div>
             </div>
         );
-
         return (
             <div>
-                <PcHeader />
+                <MobileHeader />
                 <Row>
-                    <Col span={2}></Col>
-                    <Col span={20}>
+                    <Col span={24}>
                         <Tabs onChange={(key) => this.callback(key)} type="card">
                             <TabPane tab="我的收藏列表" key="1"></TabPane>
                             <TabPane tab="我的评论列表" key="2"></TabPane>
@@ -74,16 +73,16 @@ class PcUserCenter extends Component {
                             </TabPane>
                         </Tabs>
                     </Col>
-                    <Col span={2}></Col>
                 </Row>
-                <PcFooter />
+                <MobileFooter />
             </div>
-        );
+        )
     }
 
     callback = (key) => {
         console.log(key)
     }
+
 }
 
-export default PcUserCenter;
+export default MobileUserCenter

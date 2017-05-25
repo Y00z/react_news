@@ -85,7 +85,6 @@ class MobileHeader extends Component {
                             console.log(JSON.stringify(err))
                         })
                 }
-
             }
         });
 
@@ -99,11 +98,25 @@ class MobileHeader extends Component {
         console.log(key)
     }
 
+    componentDidMount() {
+        if (localStorage.userNickName !== 'null') {
+            this.setState({
+                logined: true
+            })
+        } else {
+            this.setState({
+                logined: false
+            })
+        }
+    }
+
     render() {
         const {getFieldDecorator} = this.props.form;
         const logined = this.state.logined
             ?
-            <Icon type="inbox"/>
+            <Link target="_blank" to={{pathname: '/usercenter'}}>
+                <Icon type="inbox"/>
+            </Link>
             :
             <Icon style={{fontSize: 25}} type="setting" onClick={() => this.login()}/>
 
