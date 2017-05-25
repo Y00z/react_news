@@ -7,6 +7,7 @@ import MobileIndex from './js/components/mobile_index'
 import MobileDetail from './js/components/mobile_news_details'
 import MediaQuery from 'react-responsive';
 import PcDetails from './js/components/pc_news_details';
+import PcUserCenter from './js/components/pc_usercenter';
 import {
     BrowserRouter as Router,
     Route,
@@ -21,6 +22,7 @@ export default class Index extends React.Component {
                     <MediaQuery query='(min-device-width: 1224px)'>
                         <Route exact path="/" component={PcIndex}/>
                         <Route path="/details/:uniquekey" component={PcDetails}/>
+                        <Route path="/usercenter" component={PcUserCenter}/>
                     </MediaQuery>
                     <MediaQuery query='(max-device-width: 1224px)'>
                         <Route exact path="/" component={MobileIndex}/>

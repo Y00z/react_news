@@ -56,7 +56,6 @@ class PcHeader extends Component {
     }
 
     callback = (key) => {
-
         if (key === 1) {
             this.setState({
                 login: 'login'
@@ -147,7 +146,9 @@ class PcHeader extends Component {
                 <Button type="primary"
                         htmlType="button">{localStorage.userNickName === 'null' ? this.state.username : localStorage.userNickName }</Button>
                 &nbsp;&nbsp;
-                <Button type="dashed" htmlType="button">个人中心</Button>
+                <Link target="_blank" to={{pathname: '/usercenter'}}>
+                    <Button type="dashed" htmlType="button">个人中心</Button>
+                </Link>
                 <Button type="ghost" htmlType="button" onClick={() => this.logout()}>退出</Button>
             </Menu.Item>
             :
