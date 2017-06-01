@@ -55,7 +55,7 @@ class PcNewsImgBlock extends Component {
             news.map((data, index) => {
                 itemArr.push(
                     <div key={index} style={{float: 'left', marginLeft: leftMargin, marginTop: 5}}>
-                        <Link to={{pathname: "/details/" + data.uniquekey}} target="_blank">
+                        <Link to={{pathname: "/details/" + data.uniquekey}}>
                             <div>
                                 <img src={data.thumbnail_pic_s}
                                      alt={data.thumbnail_pic_s}

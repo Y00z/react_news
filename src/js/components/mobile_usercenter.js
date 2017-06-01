@@ -80,7 +80,7 @@ class MobileUserCenter extends Component {
                 console.log(data.title)
                 itemArr.push(
                     <Card key={index} title={`于 ${data.datetime} 评论了文章 ${data.uniquekey}`}
-                          extra={<a target="_blank" href={`/details/${data.uniquekey}`}>查看</a>}>
+                          extra={<a  href={`/details/${data.uniquekey}`}>查看</a>}>
                         <p>{data.Comments}</p>
                     </Card>
                 )
@@ -101,7 +101,7 @@ class MobileUserCenter extends Component {
                 console.log(data.title)
                 itemArr.push(
                     <Card key={index} title={data.uniquekey}
-                          extra={<a target="_blank" href={`/details/${data.uniquekey}`}>查看</a>}>
+                          extra={<a  href={`/details/${data.uniquekey}`}>查看</a>}>
                         <p>{data.Title}</p>
                     </Card>
                 )

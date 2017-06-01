@@ -146,7 +146,7 @@ class PcHeader extends Component {
                 <Button type="primary"
                         htmlType="button">{localStorage.userNickName === 'null' ? this.state.username : localStorage.userNickName }</Button>
                 &nbsp;&nbsp;
-                <Link target="_blank" to={{pathname: '/usercenter'}}>
+                <Link to={{pathname: '/usercenter'}}>
                     <Button type="dashed" htmlType="button">个人中心</Button>
                 </Link>
                 <Button type="ghost" htmlType="button" onClick={() => this.logout()}>退出</Button>
@@ -162,7 +162,7 @@ class PcHeader extends Component {
                     <Col span={4}>
                         <a href="/" className="logo">
                             <img src={logo} alt="logo"/>
-                            <span>ReactNewss</span>
+                            <span>ReactNews</span>
                         </a>
                     </Col>
                     <Col span={16}>
@@ -175,27 +175,27 @@ class PcHeader extends Component {
                             </Menu.Item>
 
                             <Menu.Item key="shehui">
-                                <Icon type="appstore"/>社会
+                                <Icon type="book"/>社会
                             </Menu.Item>
 
                             <Menu.Item key="guonei">
-                                <Icon type="appstore"/>国内
+                                <Icon type="desktop" />国内
                             </Menu.Item>
 
                             <Menu.Item key="guoji">
-                                <Icon type="appstore"/>国际
+                                <Icon type="hdd" />国际
                             </Menu.Item>
 
                             <Menu.Item key="yule">
-                                <Icon type="appstore"/>娱乐
+                                <Icon type="link" />娱乐
                             </Menu.Item>
 
                             <Menu.Item key="tiyu">
-                                <Icon type="appstore"/>体育
+                                <Icon type="bell" />体育
                             </Menu.Item>
 
                             <Menu.Item key="keji">
-                                <Icon type="appstore"/>科技
+                                <Icon type="wallet" />科技
                             </Menu.Item>
                             {logined}
                         </Menu>

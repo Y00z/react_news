@@ -42,7 +42,7 @@ class PcNewsBlock extends Component {
             news.map((data, index) => {
                 console.log(data.uniquekey)
                 itemArr.push(
-                    <Link to={{pathname: '/details/' + data.uniquekey,}} target="_blank">
+                    <Link to={{pathname: '/details/' + data.uniquekey}}>
                         <li key={index}>
                             {/*<Link to={`details/${data.uniquekey}`} style={{color: 'black'}} target="_blank">{data.title}</Link>*/}
                             <h3 style={{
@@ -58,22 +58,21 @@ class PcNewsBlock extends Component {
             })
         } else {
             itemArr.push(
-                <h1>没有数据了</h1>
+                <h1>加载中...</h1>
             )
         }
         return itemArr
+
     }
 
     render() {
         return (
             <div className="topNewsList">
-                <Router>
-                    <Card bodyStyle={{padding: 0}}>
-                        <ul>
-                            {this.renderData()}
-                        </ul>
-                    </Card>
-                </Router>
+                <Card bodyStyle={{padding: 0}}>
+                    <ul>
+                        {this.renderData()}
+                    </ul>
+                </Card>
             </div>
         );
     }

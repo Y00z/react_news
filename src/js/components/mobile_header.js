@@ -6,7 +6,7 @@ import 'antd/dist/antd.css'
 import logo from '../../image/logo.png'
 import request from './../common/request';
 import conf from './../common/conf';
-import {Menu, Icon, Modal, Button, Row, Col, Tabs, Form, Input, message} from 'antd';
+import {Popover, Icon, Modal, Button, Row, Col, Tabs, Form, Input, message} from 'antd';
 import {
     BrowserRouter as Router,
     Link
@@ -110,13 +110,32 @@ class MobileHeader extends Component {
         }
     }
 
+    logout = () => {
+        this.setState({
+            logined: false
+        })
+        localStorage.userId = null
+        localStorage.userNickName = null
+    }
+
     render() {
+        const content = (
+            <div>
+                <Link to={{pathname: '/usercenter'}}>
+                    <Button type="dashed" htmlType="button">个人中心</Button>
+                </Link>
+                <Button type="ghost" htmlType="button" onClick={() => this.logout()}>退出</Button>
+            </div>
+        );
         const {getFieldDecorator} = this.props.form;
         const logined = this.state.logined
             ?
-            <Link target="_blank" to={{pathname: '/usercenter'}}>
-                <Icon type="inbox"/>
-            </Link>
+            <Popover content={content}
+                     title={localStorage.userNickName === 'null' ? this.state.username : localStorage.userNickName }
+                     trigger="click"
+                     placement="bottomRight">
+                <Icon style={{fontSize: 25,marginRight:20}} type="inbox"/>
+            </Popover>
             :
             <Icon style={{fontSize: 25}} type="setting" onClick={() => this.login()}/>
 
