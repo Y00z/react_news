@@ -3,15 +3,9 @@
  */
 import React, {Component} from 'react';
 import 'antd/dist/antd.css'
-import logo from '../../image/logo.png'
 import request from './../common/request';
 import conf from './../common/conf';
-import {Menu, Icon, Modal, Button, Row, Col, Tabs, Form, Input, message, Card} from 'antd';
-import {
-    BrowserRouter as Router,
-    Link
-} from 'react-router-dom'
-const TabPane = Tabs.TabPane
+import { Button, Form, Input, message, Card} from 'antd';
 const FormItem = Form.Item
 
 class Comments extends Component {

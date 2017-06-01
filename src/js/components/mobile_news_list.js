@@ -6,10 +6,9 @@ import React, {Component} from 'react';
 import 'antd/dist/antd.css'
 import request from './../common/request';
 import conf from './../common/conf';
-import {Menu, Icon, Modal, Button, Row, Col, Tabs, Form, Input} from 'antd';
+import { Row, Col} from 'antd';
 import {
     BrowserRouter as Router,
-    Route,
     Link
 } from 'react-router-dom'
 

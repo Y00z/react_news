@@ -4,10 +4,6 @@
 import React, {Component} from 'react';
 import request from './../common/request';
 import conf from './../common/conf';
-import {
-    BrowserRouter as Router,
-    Link
-} from 'react-router-dom'
 import {Row, Col, Tabs, message, Card} from 'antd'
 import MobileHeader from './mobile_header'
 import MobileFooter from './mobile_footer'

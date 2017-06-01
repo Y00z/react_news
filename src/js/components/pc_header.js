@@ -56,11 +56,11 @@ class PcHeader extends Component {
     }
 
     callback = (key) => {
-        if (key === 1) {
+        if (key === '1') {
             this.setState({
                 login: 'login'
             })
-        } else if (key === 2) {
+        } else if (key === '2') {
             this.setState({
                 login: 'register'
             })
@@ -72,8 +72,8 @@ class PcHeader extends Component {
         e.preventDefault()
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
                 var login = this.state.login
+                console.log(login +'Received values of form: ', values);
                 if (login === 'login') {
                     var data = {
                         action: this.state.login,
@@ -110,7 +110,7 @@ class PcHeader extends Component {
                     request.get(conf.api.login, data)
                         .then(response => {
                             if (response) {
-                                message.error('注册成功。');
+                                message.success('注册成功。');
                             } else {
                                 message.error('SORRY,注册失败');
                             }

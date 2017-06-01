@@ -6,7 +6,7 @@ import 'antd/dist/antd.css'
 import logo from '../../image/logo.png'
 import request from './../common/request';
 import conf from './../common/conf';
-import {Popover, Icon, Modal, Button, Row, Col, Tabs, Form, Input, message} from 'antd';
+import {Popover, Icon, Modal, Button, Tabs, Form, Input, message} from 'antd';
 import {
     BrowserRouter as Router,
     Link
@@ -55,6 +55,8 @@ class MobileHeader extends Component {
                                     logined: true,
                                     modalVisible: false
                                 })
+                                localStorage.userId = response.UserId
+                                localStorage.userNickName = response.NickUserName;
                             } else {
                                 message.error('SORRY,用户名或密码错误。');
                             }
@@ -74,7 +76,7 @@ class MobileHeader extends Component {
                     request.get(conf.api.login, data)
                         .then(response => {
                             if (response) {
-                                message.error('注册成功。');
+                                message.success('注册成功。');
                             } else {
                                 message.error('SORRY,注册失败');
                             }
@@ -95,6 +97,15 @@ class MobileHeader extends Component {
     }
 
     callback = (key) => {
+        if (key === '1') {
+            this.setState({
+                login: 'login'
+            })
+        } else if (key === '2') {
+            this.setState({
+                login: 'register'
+            })
+        }
         console.log(key)
     }
 
@@ -134,10 +145,10 @@ class MobileHeader extends Component {
                      title={localStorage.userNickName === 'null' ? this.state.username : localStorage.userNickName }
                      trigger="click"
                      placement="bottomRight">
-                <Icon style={{fontSize: 25,marginRight:20}} type="inbox"/>
+                <Icon style={{fontSize: 25}} type="user"/>
             </Popover>
             :
-            <Icon style={{fontSize: 25}} type="setting" onClick={() => this.login()}/>
+            <Icon style={{fontSize: 25}} type="login" onClick={() => this.login()}/>
 
         return (
             <div id="MobileHeader">

@@ -6,7 +6,6 @@ import {Card} from 'antd';
 import request from './../common/request';
 import conf from './../common/conf';
 import {
-    BrowserRouter as Router,
     Link
 } from 'react-router-dom'
 class PcNewsImgBlock extends Component {

@@ -11,12 +11,7 @@ import PcHeader from './pc_header'
 import PcFooter from './pc_footer'
 import PcNewsImgBlock from './pc_news_img_block'
 import Comment from './comments'
-import {Menu, Icon, Modal, Button, Row, Col, Tabs, Form, Input, BackTop} from 'antd'
-import {
-    BrowserRouter as Router,
-    Link
-} from 'react-router-dom'
-
+import { Row, Col, BackTop} from 'antd'
 class PcDetails extends Component {
 
     constructor(props) {

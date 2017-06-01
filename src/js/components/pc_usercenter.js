@@ -4,11 +4,7 @@
 import React, {Component} from 'react';
 import request from './../common/request';
 import conf from './../common/conf';
-import {
-    BrowserRouter as Router,
-    Link
-} from 'react-router-dom'
-import {Menu, Icon, Modal, Button, Row, Col, message, Tabs, Form, Input, BackTop, Upload, Card} from 'antd'
+import {Row, Col, message, Tabs, Card} from 'antd'
 import PcHeader from './pc_header'
 import PcFooter from './pc_footer'
 import UploadImage from './upload_image'
@@ -28,9 +24,10 @@ class PcUserCenter extends Component {
             action: 'getuc',
             userid: localStorage.userId
         }
+        console.log(localStorage.userId)
         request.get(conf.api.myCollection, params)
             .then(response => {
-                if (response && response.length > 0) {
+                if (response) {
                     response.reverse()
                     this.setState({
                         collection: response.slice(0, 8)
@@ -56,7 +53,7 @@ class PcUserCenter extends Component {
         request.get(conf.api.myComments, params)
             .then(response => {
                 console.log(response)
-                if (response && response.length > 0) {
+                if (response) {
                     response.reverse()
                     this.setState({
                         comments: response.slice(0, 8)

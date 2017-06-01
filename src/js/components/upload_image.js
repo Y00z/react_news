@@ -2,8 +2,7 @@
  * Created by Yooz on 2017/5/25.
  */
 import React, {Component} from 'react';
-import {Menu, Icon, Modal, Button, Row, Col, message, Tabs, Form, Input, BackTop, Upload, Card} from 'antd'
-const TabPane = Tabs.TabPane
+import {Icon, Modal, Upload} from 'antd'
 
 class UploadImage extends Component {
 

@@ -3,20 +3,11 @@
  */
 import React, {Component} from 'react';
 import 'antd/dist/antd.css'
-import logo from '../../image/logo.png'
-import request from './../common/request';
-import conf from './../common/conf';
 import {
     Carousel,
-    Menu,
-    Icon,
-    Modal,
-    Button,
     Row,
     Col,
     Tabs,
-    Form,
-    Input,
     Card
 } from 'antd';
 import image1 from './../../image/carousel_1.jpg';
